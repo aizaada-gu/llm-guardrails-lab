@@ -12,7 +12,7 @@ import json
 import sys
 import time
 import urllib.request
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 OLLAMA = "http://localhost:11434"
 GUARD_MODEL = "llama-guard3:1b"
@@ -158,4 +158,4 @@ if __name__ == "__main__":
         print(json.dumps(guarded_answer(" ".join(sys.argv[1:]), os.environ.get("MODEL", DEFAULT_MODEL)), indent=2))
     else:
         print(f"Open port {PORT} (Ports tab in Codespaces). Ctrl+C to stop.")
-        HTTPServer(("0.0.0.0", PORT), Handler).serve_forever()
+        ThreadingHTTPServer(("0.0.0.0", PORT), Handler).serve_forever()
