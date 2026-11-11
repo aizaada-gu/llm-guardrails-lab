@@ -1,0 +1,9 @@
+{
+  "name": "LLM Guardrails Lab",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "hostRequirements": { "cpus": 4, "memory": "16gb" },
+  "features": { "ghcr.io/devcontainers/features/python:1": {} },
+  "forwardPorts": [8001],
+  "portsAttributes": { "8001": { "label": "Guarded LLM demo" } },
+  "postCreateCommand": "bash setup.sh"
+}
